@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<script src="../js/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="../js/interior-iframe.js"></script>
+<br>
+
+
+<div class="d-flex flex-column">
+
+<h2 class="mx-auto">Manual: How to</h2>
+<br>
+<h3 class="mx-auto">I Data</h3>
+
+<h4 class="mx-auto">Creating a database and inserting records</h4>
+</br>
+
+<p>Open SQL Server management studio and create a database called flamechat.</p>
+<p>Go to File -> Open -> File...</p>
+<p>Select "02 Data/tables_and_records.sql".</p>
+<p>Right click inside query text -> Execute. This will run the sql query.</p>
+<p>SQL query will create tables and insert some data. </p>
+<p>Data contains 11 users who have contacts and personality traits (over 650 traits are in db) and have exchanged some messages.</p>
+<p id="usernames">List of users is in "02 Data/usernames.xlsx" file, which you can use to login. </p>
+ 
+</br>
+<h3 class="mx-auto">II Running</h3>
+</br>
+<p>Compiled Server and Client are in folder "03 Application".</p>
+<p><img style="display: inline" src="../images/server.png">Server is in 03 Application/Server/net9.0-windows/FlameChatServer.exe</p>
+<p><img style="display: inline" src="../images/flame.png">Client 1 is in 03 Application/Client 1/net9.0-windows/FlameChatClient.exe</p>
+<p><img style="display: inline" src="../images/flame.png">Client 2 is in 03 Application/Client 2/net9.0-windows/FlameChatClient.exe</p>
+<p>You have to allow all .exe. files to go over private network.</p>
+
+<h4 class="mx-auto">1. Server</h4>
+
+<p>Server must be started before clients.</p>
+<p>Start the server.</p>
+<p>When starting Server, IP Address Chooser window will appear. You need to select an IP Address from the list. You also need to type the SQL Server Express instance id. Server is the one to talk to the database, it needs this data to create connection string. Click OK to confirm your info.</p>
+
+<h4 class="mx-auto"> 2. Client </h4>
+<h5 class="mx-auto">Important note</h5>
+<p>IP Address Chooser for client is appearing each time before you login and before you sign up. </p>
+<p>Choose IP address before you click anything else, because, client is starting and connecting to server, and it must have an IP address. </p>
+<p>Client has to be on the same network as Server.</p>
+<p>Example: if server is on 192.168.40.X, then all clients have to be on 192.168.40.Y. Every client CAN be on the SAME IP ADDRESS as the Server, meaning it can have address: 192.168.40.X</p>
+
+<h5 class="mx-auto">Running the client</h5>
+<p>Start the client.</p>
+<p>Click OK on Welcome dialog.</p>
+<p>LogIn/SignUp Window with two buttons (LogIn and Sign Up) will appear.</p>
+
+<h5 class="mx-auto">Use cases</h5>
+
+<p><b>Not Logged In, want to Log In:</b> 
+    <p>If you are  not logged in, choose Log In. </p>
+    <p>Two windows will appear, IP Address Chooser and Log In window.  </p>
+    <p>First select IP address. </p>
+    <p>After that login with existing <a id="userdata" href="#usernames" class="anchor">user data</a>.</p> 
+    <p>Chat window will appear.</p>
+    <p>Wait for all data to be read from database, it will take about half-minute.</p>
+    <p></p>
+</p>    
+<p><b>Not logged In, Want to Sign Up:</b> If you are  not logged in and you want to Sign up, click Sign up, and IP Address Chooser will appear together with Sign Up window. 
+    Select IP on IP Chooser and click Choose. THEN you can sign up. Fill in the username and password and choose picture. Click SIgn up and wait for a minute.
+    After Signing up, you will be Logged in and Chat Window will appear.</p>
+<p><b>Logged in:</b> If you are already logged in, IP Address Chooser also appears at the same time as LogIn/Signup window. Select IP Address that is on the same network as Server. App will read from session/session.json file login data, and it will login and show Chat Window.</p>
+<p><b>Logged In, Log in as different user:</b> If you are logged in and you want to Log in as different user, click Log Out and then click Log In.</p>
+<p><b>Logged In:</b> If you logged in, Chat Window will appear.</p>
+<p>Go to Profile to see data about user. Profile button is in upper left corner of Chat Window, and it is disabled at first.
+    This is because the app is loading data from database via server, and you cannot access profile during that time</p>
+<p>When loading is done, Profile button is enabled. Then you can go to Profile and add contacts from list of users (contacts are saved in database when added), and you can choose personality traits from list of personality traits in database (saving to database is needed for this).</p>
+
+<p>When you are logged in, you have several options:</p>
+<p>You can Add contacts, Add personality traits and Send and Receive messages.</p>
+
+<h5 class="mx-auto">Client how-to</h5>
+
+<h6 class="mx-auto">Profile</h6>
+
+<p>You access profile from Chat Window. In the upper left corner there is a Profile button.</p>
+
+<h6 class="mx-auto">Adding personality traits and contacts</h6>
+
+<p>Adding personality trait and adding contacts are done in Profile.</p>
+<p>Click Profile in Chat Window.</p>
+<p>Profile window will open. </p>
+
+<h6 class="mx-auto">Adding personality traits</h6>
+<p>Every user has personality traits. User adds traits for him/her self.</p>
+<p>User can see other users personality traits.</p>
+<p>User can use these traits to decide who will he add as contact and talk to.</p>
+
+<h6>How to add traits</h6>
+<p>Go to Profile window. In upper right part of Profile window is list of your personality traits.</p>
+<p>Click plus button to add your personality traits. <img style="display: inline" width="40" src="../images/add.png"/></p>
+<p>Small narrow window will appear and will contain all personality traits you can choose from.</p>
+<p>Select a trait and click Add.</p>
+<p>It will be added to your list.</p>
+<p>Add as many traits as you want and then click Save button. <img style="display: inline" width="40" src="../images/save.png"/></p>
+
+<p>Close the small window with list of traits from database.</p>
+
+<h6 class="mx-auto">Adding contacts</h6>
+
+<p>You have to add contacts first to be able to send messages. </p>
+<p>You have to add both participants to be each others' contacts. </p>
+<p>If Chase Walters talks to Kyra Villa, Chase has to be logged in and has to add Kyra as his contact. </p>
+<p>Kyra also has to be logged in and add Chase to her contacts. </p>
+<p>Otherwise, they will not see each others' messages. (This will be fixed in further versions).</p>
+
+<h6>How to add contacts</h6>
+<p>Log In as first user (for example, Chase Walters). </p>
+<p>Click Profile in Chat window.</p>
+<p>In Profile window, notice list of users at the lower-right part of window.</p>
+<p>This list contains all users in the database.</p>
+<p>Click the user to select it. </p>
+<p>Next to this list, there will be selected user information.</p>
+<p>Information consists of Avatar image and personality traits.</p>
+<p>When you click on user, this will be shown.</p>
+<p>To add a user as contact, there is a plus button below the list of users.</p>
+<p>Select Kyra Villa and click Add button.<img style="display: inline" width="40" src="../images/add.png"/></p>
+<p>When you click this button, user will be added to Contact list, both in Profile window and in Chat Window. 
+    Manual saving is not neccesary.</p>
+<p>Kyra Villa will then be a contact of Chase Walters.</p>
+<p>Now Kyra Villa has to add Chase as her contact.</p>
+</br>
+<p>Leave this user (Chase) logged in.</p>
+<p>Log In as another user (Kyra Villa), who will talk to the first user (Chase).</p>
+<p>Follow previous steps to add a contact. (Chose Chase from the list of users and click Add (Plus) button.)</p>
+<p>After both users added each other as contacts, they can communicate.</p>
+
+<h6 class="mx-auto">Sending messages</h6>
+<p>Send message and view messages are done in Chat Window. </p>
+<p>Chat window has list of messages and text field to type message in.</p>
+<p>Chat window has info about logged user: an image (avatar) is to the left, and, between Profile button and image, is username.</p>
+<p>Chat window has list of contacts in the lower left corner.</p>
+<p>When contact is selected, user info on window appear. This contact info is at the right of the window. There is username to the right of the message list and above that is contact username.</p>
+<p>So, image to the left is logged user, and image to the right is his/her contact.</p>
+</br>
+
+<h6>How to send messages</h6>
+<p>You have two Chat windows open, one is form Kyra and the other is Chase.</p>
+<p>Click on Chat window of user that will send a message (For example Chase).</p>
+<p>Now, Chase should select contact to talk to. Select Kyra Vila from contacts.</p>
+<p>Chase can type his message in message box.</p>
+<p>When typing is over, Chase will click big purple button in a shape of arrow (or triangle)</p>
+<p>Second later, Kyra Villa will receive this message. Sound is played when message is received.</p>
+</br>
+<p>That is all.</p>
+</div>

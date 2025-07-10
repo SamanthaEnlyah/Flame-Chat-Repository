@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<script src="../js/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="../js/interior-iframe.js"></script>
+<br>
+
+<h2>Application flow</h2>
+<br>
+<p> - Server</p>
+<p>Server is started on a chosen IP. </p>
+<p>Server starts broadcasting its' IP address on the network.</p>
+<br>
+<p> - Client </p>
+<p>Client is started and receives broadcast IP address. </p>
+<p>Client connects to server. </p>
+
+<p> - Server</p>
+<p>Server accepts new client, and saves it in client list: client Socket and id of the user who has just logged in from the client.</p>
+
+<p> - Client</p>
+<p>Client sends a command to Server to create new user.</p>
+<p>Client does this by creating a Command object that has properties RegularCommand and Value. This class is in SharedModel class library.</p>
+<p>Command.RegularCommand is of type RegularUserAllowedCommand which is an enum containing all possible commands that client can send to server.</p>
+<p>Some of possible commands that are in RegularUserAllowedCommand enum are:</p>
+        <br>CheckIfUsernameExists,
+        <br>SignUp,
+        <br>LogIn,
+        <br>SendMessage,
+        <br>ReceiveMessage,
+        <br>NotifyUserAboutReceivedMessages,
+	    <br>GetUsers,
+        <br>IsUserMyContact,
+        <br>SaveUserAsContact,
+        <br>GetContacts,
+        <br>GetAllPersonalityTraits,
+        <br>AddUserTrait,
+        <br>LogOut,
+        <br>MessageFromServer
+
+<p>Value is of type object, meaning it can be any value that RegularCommand needs.</p>
+
+<p>So, Command is a class that encapsulates this RegularUserAllowedCommand and Value that goes with it. It is then being sent to Server.</p>
+<p>In example where command Sign up is sent to server, RegularCommand would be: RegularUserAllowedCommand.SignUp and </p>
+<p>Value could be: </p>
+    <code>
+        <pre>
+        new ChatUser { 
+            Username = "Isabela Parks", 
+            Password= hashpass('ip'), 
+            Avatar = image.bytes 
+        } 
+        </pre>
+</code>
+<p>This whole object, Command command (containing data RegularCommand which is RegularUserAllowedCommand.SignUp and value, that is this time typeof ChatUser), is then serialized to json and sent as bytes over Socket to Server.</p>
+
+<p>Class that does this is Client class in FlameChatClient.ChatClient namespace. Method SendCommandToServer is called to do this. This method accepts RegularUserAllowedCommand command and value, and creates Command object which is then sent to Server.</p>
+
+<p> - Server</p>
+<p>Server runs HandleClientAsync() in a separate thread. It receives bytes from client and deserializes command object with JsonSerializer.Deserialize<Command>(c); Now Server can use this object to extract what needs to be done, which RegularUserAllowedCommand will Server need to use and with which parameters.</p>
+<p>It falls through switch checking for RegularUserAllowedCommands. When it reaches SignUp case, several things are executed:</p>
+
+<p>It extracts avatar image from commandObject.Value object:</p>
+<code>
+    <pre>
+    byte[]? bytes = new byte[30000000];                                               
+    ((JsonElement)commandObject.Value).GetProperty("AvatarImage").TryGetBytesFromBase64(out bytes);
+    </pre>
+</code>
+
+<p>It creates ChatUser with parameters extracted also from Value object:</p>
+
+<code>
+    <pre>
+    ChatUser user = new ChatUser() 
+    { 
+        Username = ((JsonElement)commandObject.Value).GetProperty("Username").GetString(),
+        Password = ((JsonElement)commandObject.Value).GetProperty("Password").GetString(),
+        AvatarImage = bytes
+    };
+    </pre>
+</code>
+<p>I suppose this could have been done with simply deserializing command.Value to ChatUser directly, since i am already sending ChatUser. But I was just learning Json serializing and didn't see enough to know if that is possible.</p>
+
+<p>When Server extracts all this data, it calls Database operations. This is done through two classes:</p>
+<p>ServerDbOperations, which calls database directly. The other class is: DBContext from SharedModel project.</p>
+<p>ServerDbOperations calls DBContext, which has FlameDBCOntext (which is EF generated class, and has properties that correspond to database tables).</p>
+
+<p>In our example, this is the code in AddUser (or SignUp user) method, that calls these methods:</p>
+<code>
+    <pre>
+    await DBContext.FlameDBContext.ChatUsers.Add(chatUser);
+    await DBContext.FlameDBContext.SaveChangesAsync();
+    return true;
+    </pre>
+</code>
+<p>
+And also catches some exceptions, where returns false.
+</p>
+
+<p>Every call to database has to be awaited.</p>
+
+<p>After calling database method, Server gets some result form it. In this case we don't have anything to return to user except whether database completed the task successfully or not. </p>
+
+<p>We are returning some value to user. We also want to notify Client as to what it should do with this value. This looks like a pattern we used to send command to server. So, we can reuse Command class. </p>
+<code>
+    <pre>
+        Command responseCommand = new Command()
+        {
+            Value = await serverDbOperations.SignUp(user),
+            RegularCommand = RegularUserAllowedCommand.SignUp
+        }
+    </pre>
+</code>
+
+<p>Exiting from switch, every time we receive command, we also return response. </p>
+
+<p>Server serializes this command:</p>
+ <code><pre>string json = JsonSerializer.Serialize(responseCommand);</pre></code>
+
+<p>converts into bytes:</p>
+ <code><pre>var echoBytes = Encoding.UTF8.GetBytes(message);</pre></code>
+
+<p>and sends back to client who sent an initial command:</p>
+ <code><pre>await newClient.Client.SendAsync(echoBytes, 0);</pre></code>
+
+<p>- Client</p>
+<p>Now it's clients time to deserialize command. We were first just sending one, now we have to decide what to do with it.</p>
+<p>There is ReceiveMessage() on Client that is running in a separate thread. Here we have same structure as with Server's HandleClientAsync().</p>
+<p>ReceiveMessage gets server response:</p>
+<code><pre>received = await client.ReceiveAsync(buffer, SocketFlags.None);</pre></code>
+
+<p>There is a switch block and inside the RegularUserAllowedCommand.SignUp case.</p>
+
+<p>Entering the case block, Client extracts response from the Command object.</p>
+<code><pre>object deserializedResponse = command.Value;</pre></code>
+
+<p>We create new Response (a class in ChatClient folder of FLameChatClient project) and set its value to, now deserialized, Command.Value.</p>
+<code><pre>Response ResponseFromServer = new Response(Boolean.Parse(deserializedResponse.ToString()));</pre></code>
+
+<p>And we call SetResponse():</p>
+<code><pre>SetResponse(ResponseFromServer);</pre></code>
+<p>This method sets ResponseFromServer to an object of a type TaskCompletionSource, which is a way to control completion of asynchronous tasks.</p>
+
+<p>After response is received, and we know that it is because the await operator told us to wait until methods are done with executing, we get response in the same method that sent command to server (the RegularUserSignUp class, method SignUp(ChatUser)). </p>
+
+<code><pre>Response response = await GlobalVariables.GetClient().GetResponse();</pre></code>
+
+<p>GlobalVariables.GetClient() is where we keep Client reference.</p>
+
+<p>Now we have Response on Client. In the example, we check if Response is true and if it is, we start LogIn process.
+GetResponse() from Client is returning awaited _responseTaskCompletionSource.Task.</p>
+
+<p>This process is done with every other command. Responses vary and what is done after response is received also varies.</p>
+

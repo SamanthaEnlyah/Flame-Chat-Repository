@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>GUI\icons8-flame-70.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="GUI\delete_100.png" />
+    <None Remove="GUI\dots.gif" />
+    <None Remove="GUI\icons8-add-100.png" />
+    <None Remove="GUI\icons8-edit-100.png" />
+    <None Remove="GUI\icons8-male-user-94.png" />
+    <None Remove="GUI\icons8-minus-100.png" />
+    <None Remove="GUI\icons8-save-50.png" />
+    <None Remove="GUI\icons8-x-100.png" />
+    <None Remove="GUI\purple check.png" />
+    <None Remove="GUI\save.png" />
+    <None Remove="GUI\send-100.png" />
+    <None Remove="GUI\send-48.png" />
+    <None Remove="GUI\wrong-100.png" />
+    <None Remove="GUI\wrong_100.png" />
+    <None Remove="Res\Audio\message_pop.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="GUI\icons8-flame-70.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="9.0.6" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SharedModel\SharedModel.csproj" />
+    <ProjectReference Include="..\SharedRegularUser\SharedRegularUser.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="GUI\delete_100.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GUI\dots.gif" />
+    <Resource Include="GUI\icons8-add-100.png" />
+    <Resource Include="GUI\icons8-edit-100.png" />
+    <Resource Include="GUI\icons8-male-user-94.png" />
+    <Resource Include="GUI\icons8-minus-100.png" />
+    <Resource Include="GUI\icons8-save-50.png" />
+    <Resource Include="GUI\icons8-x-100.png" />
+    <Resource Include="GUI\purple check.png" />
+    <Resource Include="GUI\save.png" />
+    <Resource Include="GUI\send-100.png" />
+    <Resource Include="GUI\send-48.png" />
+    <Resource Include="GUI\wrong_100.png" />
+    <Resource Include="Res\Audio\message_pop.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GUI\IpAddressChooser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

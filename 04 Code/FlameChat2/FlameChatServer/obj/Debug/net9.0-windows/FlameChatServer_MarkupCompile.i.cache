@@ -1,0 +1,20 @@
+﻿FlameChatServer
+1.0.0.0
+
+winexe
+C#
+.cs
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\FlameChatServer\obj\Debug\net9.0-windows\
+FlameChatServer
+none
+false
+TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\FlameChatServer\App.xaml
+31930052112
+12144254380
+121791287494
+2331799771223
+GUIDialogs\IpAddressChooser.xaml;MainWindow.xaml;ServerMessages.xaml;
+
+False
+

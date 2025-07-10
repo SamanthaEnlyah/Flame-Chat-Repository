@@ -1,0 +1,15 @@
+﻿<Window x:Class="FlameChatAdmin.GUIDialogs.IpAddressChooser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlameChatAdmin.GUIDialogs"
+        mc:Ignorable="d"
+        Title="IpAddressChooser" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,-6">
+        <ListBox x:Name="listIPs" d:ItemsSource="{d:SampleData ItemCount=5}" Height="169" VerticalAlignment="Top" HorizontalAlignment="Left" Width="732" Margin="32,171,0,0" RenderTransformOrigin="0.5,0.472"/>
+        <Button x:Name="BtnChooseIP" Content="Choose" HorizontalAlignment="Left" Margin="34,345,0,0" VerticalAlignment="Top" Height="45" Width="130" Click="BtnChooseIP_Click"/>
+        <Label Content="Choose one IPv4 address where Admin Client will start (IPv6 addresses are not listed).&#xA;It has to be on the same network as Server. &#xA;" HorizontalAlignment="Left" Height="142" Margin="34,26,0,0" VerticalAlignment="Top" Width="626" FontSize="16"/>
+
+    </Grid>
+</Window>

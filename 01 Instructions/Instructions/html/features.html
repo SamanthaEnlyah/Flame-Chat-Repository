@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<br>
+
+<h3>FEATURES</h3>
+<br>
+<h3>1. CLIENT:</h3>
+
+<p>List of implemented features:</p>
+<i>[App is still under development]</i>
+
+<ol type="1">
+    <li>IP CHOOSER</li>
+    <li>SIGN UP</li>
+	<li>LOG IN </li>
+	<li>LOG OUT</li>
+	<li>VIEW PROFILE</li>
+    <li>ADD PERSONALITY TRAIT</li>
+    <li>ADD CONTACT</li>
+    <li>SEND MESSAGE</li>
+    <li>VIEW MESSAGES</li>
+	
+</ol>
+
+
+Not implemented features:
+<ol type="1">
+    <li>Change username</li>
+    <li>Change password</li>
+    <li>Delete contact</li>
+    <li>Notify user if he/she has message from a user that is not his/her contact. You have to manually add contact to be able to see the message.</li>
+    <li>Indicator for unseen messages</li>
+    <li>Indicator for seen messages</li>
+    <li>Indicator for online users </li>
+</ol>
+
+<p>
+Client features:
+</p>
+
+<p>Add personality trait and add contact are done in Profile.</p>
+<p>Add contacts first to be able to send messages. You have to add both participants to be each others' contacts. If Isabela Parks talks to Caden Jacobs, Caden has to be logged in and has to add Isabela as his contact. Isabela also has to be logged in and add Caden to her contacts. Otherwise, they will not see each others' messages. (This will be fixed in further versions).</p>
+<p>Send message and view messages are done in Chat Window. </p>
+
+<p>You access profile from Chat Window. In the upper left corner there is a Profile button.</p>
+<p>When you login, Profile button is disabled, because the app is loading data from database via server, and you cannot access profile during that time.</p>
+<p>When loading is done, Profile button is enabled. Then you can go to Profile and add contacts from list of users (contacts are saved in database when added), and you can choose personality traits from list of personality traits in database (saving to database is needed for this).</p>
+
+<h3>2. SERVER:</h3>
+<ol>
+    <li>IP CHOOSER</li>
+    <li>BROADCASTING IP</li>
+    <li>LISTEN TO COMMANDS FROM CLIENT VIA SOCKETS</li>
+    <li>COMMUNICATE WITH THE DATABASE</li>
+</ol>

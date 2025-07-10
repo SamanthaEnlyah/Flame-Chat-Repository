@@ -1,0 +1,22 @@
+{
+  "ShowEmptyProjects": false,
+  "SelectedGroups": [
+    "E:\\Programiranje\\PROJEKTI\\Projects and workspaces\\Visual Studio 2022 Projects\\FlameChat2\\FlameChat2\\Properties\\Resources.resx"
+  ],
+  "ExpandedProjects": [
+    "E:\\Programiranje\\PROJEKTI\\Projects and workspaces\\Visual Studio 2022 Projects\\FlameChat2\\FlameChat2\\FlameChatClient.csproj"
+  ],
+  "EnableSpellChecker": true,
+  "ColumnOrder": [
+    "name",
+    "type",
+    "neutral-value",
+    "neutral-comment",
+    "file-path",
+    "file-name"
+  ],
+  "VisibleColumnKeys": [
+    "name",
+    "neutral-value"
+  ]
+}

@@ -1,0 +1,36 @@
+﻿<Window x:Class="FlameChatClient.GUI.SignUpChatUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlameChatClient.GUI"
+        mc:Ignorable="d"
+        Title="SignUp" Height="659" Width="1071" Closed="Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="txtusername" HorizontalAlignment="Left" Margin="103,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" ToolTip="Username" Height="18" TextChanged="txtusername_TextChanged"/>
+        <TextBox x:Name="txtpassword" HorizontalAlignment="Left" Margin="103,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" Height="18"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Height="23" Margin="10,21,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Height="25" Margin="10,64,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnsignup" Content="Sign Up" Margin="206,0,0,101" Click="btnsignup_Click" HorizontalAlignment="Left" Width="98" Height="53" VerticalAlignment="Bottom"/>
+        <Image x:Name="avatar" HorizontalAlignment="Left" Height="324" Margin="103,120,0,0" VerticalAlignment="Top" Width="327" RenderTransformOrigin="0.5,0.5" Source="/GUI/icons8-male-user-94.png">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label Content="Avatar" HorizontalAlignment="Left" Height="33" Margin="18,103,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.295,0.011"/>
+        <Button x:Name="btn_pick_img" Content="Pick an image" HorizontalAlignment="Left" Height="25" Margin="10,136,0,0" VerticalAlignment="Top" Width="91" Click="btn_pick_img_Click"/>
+        <Label x:Name="message" Content="" HorizontalAlignment="Left" Height="30" Margin="372,18,0,0" VerticalAlignment="Top" Width="140" BorderBrush="#FFA309D2" Foreground="#FFFF0017"/>
+
+        <ListBox x:Name="_test_messages_list" HorizontalAlignment="Left" Height="598" Margin="588,24,0,0" VerticalAlignment="Top" Width="462" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>server pink 3.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="server pink 3.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlameChatDatabaseLibrary\FlameChatDatabaseLibrary.csproj" />
+    <ProjectReference Include="..\SharedAdmin\SharedAdmin.csproj" />
+    <ProjectReference Include="..\SharedModel\SharedModel.csproj" />
+    <ProjectReference Include="..\SharedRegularUser\SharedRegularUser.csproj" />
+  </ItemGroup>
+
+</Project>

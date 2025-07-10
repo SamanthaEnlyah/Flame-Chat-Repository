@@ -1,0 +1,14 @@
+﻿<Window x:Class="FlameChatAdmin.GUI.Test"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlameChatAdmin.GUI"
+        mc:Ignorable="d"
+        Title="Test" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnclient" Content="Start client" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Height="37" Width="144" Click="btnclient_Click"/>
+        <ListBox x:Name="_test_messages" HorizontalAlignment="Center" Height="313" Margin="0,64,0,0" VerticalAlignment="Top" Width="635" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+
+    </Grid>
+</Window>

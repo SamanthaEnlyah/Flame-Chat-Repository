@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<br>
+<h2>USE CASES</h2>
+
+<h3>DATA</h3>
+
+
+<p>To be able to use the app, you need the database. SQL file is provided which will create tables and fill them with dummy data. </p>
+
+
+<p>Steps:</p>
+<ol type="1">
+    <li>
+Create database named flamechat.
+(Go to SQL Server Management Studio and create database called flamechat).
+</li>
+<li>
+Create tables and records by executing sql:
+Go to: File->Open->File... and select "02 - Data/tables_and_records.sql".
+Right click and click Execute.
+This will create tables and insert data. 
+</li>
+</ol>
+
+<h3>STARTING THE APPLICATION</h3>
+
+<p>To start application, follow the next steps:</p>
+
+<ol>
+<li><p>Go to "03 Application" folder.
+There you have compiled server and client.
+First, you have to start server, and then clients, so that client can connect to the server. 
+</p>
+</li>
+<li>
+<p>Start server:
+Start server by running "03 Application/Server/FlameChatServer.exe".
+Two windows will appear, IP Address Chooser window and Server Messages. In IP Address Chooser choose one of listed IPs. In the text field, type SQL Server instance id. This is needed for connection string for access to database. After clicking OK, a dialog box will appear and when you click OK in the dialog, server will start on the chosen IP address and no further interactions with server will be needed. Server Messages will show logs from server, so you can follow what is going on. 
+</p>
+</li>
+<li><p>Start clients:</p>
+<p>
+Copy client directory "03 Application/Client 1" to this or any other folder as many times as you need clients.
+For example, if you want to test 4 clients, make sure you have 4 folders Client X, one for each client: Client 1, Client 2, Client 3 and Client 4.
+Several windows will open when you start client. Please, start clients one by one and login to each before moving to the next.
+Client executable to run is: 03 Application/Client 1/FlameChatClient.exe.
+</p>
+</li>
+</ol>
+<ol>
+<h3>USING THE APPLICATION</h3>
+<h4>LIST OF USE CASES</h4>
+<li><p>
+When client starts, it will show MESSAGEBOX with this message “Welcome to Flame Chat!”. 
+Click OK on this MessageBox and small window with only two options will appear. These options are Log In and Sign Up. 
+</p></li>
+<li><p>
+IP ADDRESS CHOOSER:</p>
+<p>
+When you click Log In, before typing your username and password, you need to choose IP Address which will Client use. Use IP on the same network that server is started on. You can use same IP address that server uses.
+</p></li>
+
+<li>
+    <p>LOG IN:</p>
+
+ 
+<p>Since you have inserted data in database, you can Log In right away, without Signing Up. There are usernames and passwords in file: 02 Data/usernames.xlsx. Use them to Log In. Passwords are all constructed as “first letters of first name and of last name”. </p>
+<p>When you type in username and password, login window will close and Chat Window will appear.</p>
+<p>You need to wait a minute because it is getting data from db. There is Profile button in upper left corner of the window, which will be disabled at first. When you see Profile become enabled, you can start using the program. </p>
+<p>After logging in as the first user, login as second, so you can send messages to each other.</p>
+<p>You can copy Client 1 folder on another computer that is on the same network as server, login and try chatting with another person.</p>
+<p>When you log in, SessionManager will create session.json file in Client X /session folder. This will save username, password and avatar. </p>
+</li>
+
+<li>
+
+<p>LOG OUT:</p>
+<p>If open, close Profile window, and click Log Out. This will remove session.json file and close the Chat window.</p>
+</li>
+
+
+<li>
+<p>	CLOSING CHAT WINDOW: </p>
+<p>If you close Chat Window without clicking Log Out, you stay logged in. The session data stays in the folder “Client X/session”. This will automate login on next run.</p>
+</li>
+<li>
+<p>	AUTOMATIC LOG IN: </p>
+<p>When you start next time, after you didn’t logout, app is automatically logging you in, no need to click on Log In.</p>
+</li>
+
+<li><p>	SIGN UP: </p>
+<p>You can create an account. Click Sign Up on that small window and Sign Up window will appear. Type your new username and password, and choose an image. While typing username, annotation will appear to the right of textbox saying whether username that you typed exists or not. You cannot create account with username that already exists. Click Sign Up. To the right of the window there is log list.  You will be automatically logged in when Sign up is done. </p>
+</li>
+
+<li><p>CHAT WINDOW: </p>
+<p>When Chat Window opens, client is ready to send messages to another user. Chat window has access to Profile and it has Log Out option. There is a list of contacts, a list of sent and received messages, text box to write messages in, and send message button (purple triangle). </p>
+</li>
+<li>
+    <p>PROFILE:</p>
+    <p>Profile can be opened by clicking Profile in Chat Window. There you will see information about a user. 
+        In the upper part of window there are: Image, Username and Password and Personality Traits list.
+        In the lower part of window, on the left, there is a list of ALL users that are signed up.
+        When you select a user, in the lower center part of window you will see user data for selected user (image and personality traits). 
+        In the lower right part of window, you can see your contacts.
+        </p>
+</li>
+<li>
+    <p>ADDING CONTACTS:</p>
+    <p>To add a contact, you need to go to Profile and form a list of users select a user you want to add, and click purple Add (plus) button. It is saved directly to database after clicking on plus, no save button. Added contact will appear in the right part of Profile window, the “Your Contacts” part. Also, it will appear in Chat Window, in the lower left part of window.</p>
+</li>
+
+<li>
+    <p>ADD PERSONALITY TRAITS:</p>
+    <p>Go to Profile and find Personality Traits list at the upper right part of window. Click purple plus button . A list of all personality traits from database will appear. Chose one and click Add. Trait will appear in the list of your traits. Add as many traits as you want. 
+        Then close list of traits from database and click Save button   below the list of your chosen traits. This will insert traits to database.
+</p>
+</li>
+<li>
+    <p>SENDING MESSAGE:</p>
+    <p>To send a message, go to Chat Window, and select a Contact in the lower left part of window. Type your message and click big purple triangle (arrow). If your contact is logged in, the message will appear in his/her Chat Window messages list, and sound will be played.
+</p>
+</li>
+<li>
+    <p>VIEW MESSAGES:</p>
+        When you click on your contacts, messages from that contact will appear and others will be removed.
+    <p></p>
+</li>
+</ol>
+
+

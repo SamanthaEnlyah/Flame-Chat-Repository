@@ -1,0 +1,42 @@
+body{
+    font-size: 18px;
+}
+
+
+#main{
+    display: flex;
+}
+
+#content{
+    margin: 0 auto;
+}
+
+.text-size-md{
+    font-size: 24px;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+/* :target {
+  background-color: rgb(107, 12, 116); /* or your preferred highlight 
+  transition: background-color 0.5s ease;
+
+} */
+
+.anchor{
+    cursor:pointer;
+}
+
+
+/* :target {
+    
+  animation: targetFlash 4s ease-out;
+}
+
+@keyframes targetFlash {
+  0%   { background-color: rgb(119, 23, 156); }
+  100% { background-color: transparent; }
+}  */
+

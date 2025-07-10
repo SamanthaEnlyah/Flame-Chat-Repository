@@ -1,0 +1,11 @@
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\bin\Debug\net9.0\SharedAdmin.deps.json
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\bin\Debug\net9.0\SharedAdmin.dll
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\bin\Debug\net9.0\SharedAdmin.pdb
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\SharedAdmin.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\SharedAdmin.AssemblyInfoInputs.cache
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\SharedAdmin.AssemblyInfo.cs
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\SharedAdmin.csproj.CoreCompileInputs.cache
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\SharedAdmin.dll
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\refint\SharedAdmin.dll
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\SharedAdmin.pdb
+E:\Programiranje\PROJEKTI\Projects and workspaces\Visual Studio 2022 Projects\FlameChat2\SharedAdmin\obj\Debug\net9.0\ref\SharedAdmin.dll

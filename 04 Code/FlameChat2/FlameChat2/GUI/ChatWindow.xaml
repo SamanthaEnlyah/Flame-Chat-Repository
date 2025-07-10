@@ -1,0 +1,50 @@
+﻿<Window x:Class="FlameChatClient.GUI.ChatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlameChatClient.GUI"
+        mc:Ignorable="d"
+        Title="Chat" Height="692" Width="1081" Loaded="Window_Loaded">
+    <Grid Margin="0,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="134*"/>
+            <RowDefinition Height="715*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btn_logout" Content="Log Out" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="56" Click="BtnLogout_Click"/>
+        <TextBox x:Name="InputMessageText" HorizontalAlignment="Left" Height="147" Margin="323,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="482" ToolTip="Type your message here" Grid.Row="1"/>
+        <Button x:Name="BtnSendMessage" Content="" HorizontalAlignment="Left" Height="96" Margin="805,382,0,0" VerticalAlignment="Top" Width="84" BorderBrush="{x:Null}" Grid.Row="1" Click="BtnSendMessage_Click">
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <!-- Background Image -->
+                        <Image x:Name="BackgroundImage" Source="/GUI/send-100.png" Stretch="Fill"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover State -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackgroundImage" Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <!-- Pressed State -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackgroundImage" Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+        <ListBox x:Name="listOfContacts" HorizontalAlignment="Left" Height="252" Margin="32,252,0,0" VerticalAlignment="Top" Width="237" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="listOfContacts_SelectionChanged" Grid.Row="1"/>
+        <Image x:Name="logged_in_avatar" HorizontalAlignment="Left" Height="202" Margin="38,126,0,0" VerticalAlignment="Top" Width="231" Grid.RowSpan="2"/>
+        <Button x:Name="btn_profile" Content="Profile" HorizontalAlignment="Left" Height="25" Margin="77,10,0,0" VerticalAlignment="Top" Width="56" Click="BtnProfile_Click"/>
+        <Label Content="Contacts" HorizontalAlignment="Left" Height="28" Margin="38,219,0,0" VerticalAlignment="Top" Width="112" Grid.Row="1"/>
+        <Label Content="I am:" HorizontalAlignment="Left" Height="40" Margin="10,60,0,0" VerticalAlignment="Top" Width="40"/>
+        <Label x:Name="labelMyUsername" Content="Label" HorizontalAlignment="Left" Margin="39,48,0,0" VerticalAlignment="Top" Width="235" Height="52" VerticalContentAlignment="Center" FontSize="22"/>
+        <Label Content="Talking to:" HorizontalAlignment="Left" Margin="734,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.314,-0.17" Width="70"/>
+        <Label x:Name="labelIAmTalkingToContactUsername" Content="Label" HorizontalAlignment="Left" Margin="804,48,0,0" VerticalAlignment="Top" Width="311" VerticalContentAlignment="Center" Height="52" FontSize="22"/>
+        <ListBox x:Name="chatMessages" HorizontalAlignment="Left" Height="354" Margin="323,93,0,0" VerticalAlignment="Top" Width="477" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.RowSpan="2"/>
+        <Image x:Name="imgContactAvatar" HorizontalAlignment="Left" Height="202" Margin="847,52,0,0" VerticalAlignment="Top" Width="231" Grid.Row="1"/>
+
+    </Grid>
+</Window>

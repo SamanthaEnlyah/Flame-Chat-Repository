@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "FlameChatServer\\FlameChatServer.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "FlameChat2\\FlameChatClient.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
