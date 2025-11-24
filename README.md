@@ -13,5 +13,5 @@ Subfolders include:
 <br>
 Follow the instructions from “01 Instructions/Instructions” folder. Start index.html and follow links in the navbar from left to right.
 
-If you want to see only instructions, clik on the link below:
+If you want to see instructions in browser without downloading the project, clik this link:
 <a href='https://samanthaenlyah.github.io/Flame-Chat-Repository/01%20Instructions/Instructions/index.html'>https://samanthaenlyah.github.io/Flame-Chat-Repository/01%20Instructions/Instructions/index.html</a>
